@@ -1,5 +1,5 @@
 
-//define the images array and assign each picture to an index
+//define the images array
 var cardImages = [];
 
 cardImages[0] = "../images/earth.png"; 
@@ -19,14 +19,14 @@ cardImages[11] = "../images/saturn.png";
 function shuffle(array) {
     var currentIndex = array.length,  randomIndex;
   
-    // While there remain elements to shuffle...
+    // While there remain elements to shuffle
     while (0 !== currentIndex) {
   
-      // Pick a remaining element...
+      // Pick a remaining element
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
   
-      // And swap it with the current element.
+      // And swap it with the current element
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
@@ -35,7 +35,7 @@ function shuffle(array) {
 }
 shuffle(cardImages);
 
-//select all figures on the page and assign images from the array
+// assign images from the array to figures on page
 const figures = document.querySelectorAll("img");
 
 for (var i = 0; i < figures.length; i++) {
@@ -50,17 +50,15 @@ const cards = document.querySelectorAll('.card');
 //select all flipped cards
 let flippedCards = document.getElementsByClassName("flipped");
 
-//new loop?
 
-
-//flip any card
+//flip any card if there are less than 2 cards flipped
 cards.forEach(item => {
     item.addEventListener('click', flipAnyCard = e => {
         if (flippedCards.length < 2) {
         item.style.transform = "rotateY(180deg)";
         item.classList.add("flipped");
         }
-        if (flippedCards.length == 2){
+        if (flippedCards.length == 2) {
         compareCards();
         }
     }); 
@@ -68,9 +66,9 @@ cards.forEach(item => {
 
 function compareCards () {
     if(flippedCards[0].lastElementChild.lastElementChild.src == flippedCards[1].lastElementChild.lastElementChild.src) {
-        setTimeout(removeCardsfromTable, 1500)
+        setTimeout(removeCardsfromTable, 1500);
     } else {
-        setTimeout(flipBack, 1500)    
+        setTimeout(flipBack, 1500);    
     }
 }
 
